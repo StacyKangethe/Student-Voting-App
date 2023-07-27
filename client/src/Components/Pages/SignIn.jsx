@@ -1,6 +1,9 @@
 import React, { useState} from "react";
 import styled from "styled-components";
 import axios from "axios";
+import { useDispatch } from 'react-redux';
+import { loginFailure, loginStart, loginSuccess } from "../../redux/userSlice";
+import { useNavigate } from 'react-router-dom';
 
 
 const Container = styled.div`
@@ -52,16 +55,20 @@ const Button = styled.button`
 
 
 const SignIn = () => {
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
+  const navigate = useNavigate()
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    dispatch(loginStart());
     try {
-      const res = await axios.post("/auth/signin", {email, password})
-      console.log(res.data)
-    }catch {
-
+      const res = await axios.post("/auth/signin", {email, password});
+      dispatch(loginSuccess(res.data));
+      navigate("/home")
+    }catch (err) {
+      dispatch(loginFailure());
     }
   };
 
@@ -70,6 +77,7 @@ const SignIn = () => {
       <Wrapper>
         <Title>Student Voting App</Title>
         <SubTitle>Already Registered? Log In</SubTitle>
+        <form>
         <Input
           type="email"
           placeholder="email"
@@ -92,6 +100,7 @@ const SignIn = () => {
           onChange={e=>setPassword(e.target.value)}
         />
         <Button>Sign up</Button>
+        </form>
       </Wrapper>
     </Container>
   );
