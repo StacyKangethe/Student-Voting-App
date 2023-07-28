@@ -1,0 +1,138 @@
+export const dataUser = [
+    {
+        _id: "63701cc1f03239c72c00017f",
+        student_id: "4792247",
+        email: "kranstead0@narod.ru",
+        password: "omMDCh",
+        school: "science",
+    },
+    {
+        _id: "63701d74f03239d40b00007e",
+        student_id: "475435",
+        email: "daudi@gmailcom",
+        password: "agfwsef",
+        school: "humanities",
+    },
+    {
+        _id: "63701d74f03239bef0000154",
+        student_id: "475435",
+        email: "daudi@gmailcom",
+        password: "agfwsef",
+        school: "humanities",
+    },
+    {
+        _id: "637125a0f03239d40b0000dc",
+        student_id: "48429735",
+        email: "knowles@gmailcom",
+        password: "ag3mn93f",
+        school: "science",
+    },
+];
+
+export const dataCandidate = [
+    {
+        name: "James Njue",
+        position: "Vice Chairperson",
+        school: "science",
+        major: "IST",
+    },
+    {
+        name: "Catherie Omuka",
+        position: "Public Relations Officer",
+        school: "humanities",
+        major: "Psychology",
+    },
+    {
+        name: "JNewton Olewe",
+        position: "Chairperson",
+        school: "science",
+        major: "APT",
+    },
+    {
+        name: "Nickson Kiama",
+        position: "Chairperson",
+        school: "humanities",
+        major: "Psychology",
+    },
+    {
+        name: "James Olewe",
+        position: "Vice Chairperson",
+        school: "science",
+        major: "APT",
+    },
+    {
+        name: "Damaris Kiama",
+        position: "Treasurer",
+        school: "humanities",
+        major: "Philosophy",
+    },
+    {
+        name: "James Njue",
+        position: "Secretary",
+        school: "science",
+        major: "IST",
+    },
+];
+
+export const dataCandidateStat = [
+    {
+        _id: "63701cc1f03239c72c00017f",
+        candidateId:  "63701cc1f03239f09e00018a",
+        position: "chairperson",
+        votes: [
+            "63701d74f0323986f3000158",
+            "63701d74f03239d40b00007e",
+            "63701d74f03239867500014b",
+            "63701d74f032398675000152",
+            "63701d74f0323986f300013e",
+            "63701d74f03239b913000026",
+            "63701d74f0323986f3000146",
+            "63701d74f03239bef0000140",
+            "63701d74f03239b913000042",
+            "63701d74f03239bef0000150",
+            "63701d74f032396b8e00002f",
+            "63701d74f03239bef000014a",
+            "63701d74f03239528f000042",
+            "63701d74f032390a3400034d",
+            "63701d74f03239cdc5000029",   
+        ],
+        votesTotal: 15,
+        school: "science",
+        date:  "2021-01-02",
+    },
+    {
+        _id: "6371259df03239f793000002",
+        candidateId: "63701d24f03239b7f7000018",
+        position: "vice Chairperson",
+        votes: [
+            "63701d74f0323986f3000158",
+            "63701d74f03239d40b00007e",
+            "63701d74f03239867500014b",
+            "63701d74f032398675000152",
+        ],
+        votesTotal: 4,
+        school: "science",
+        date:  "2021-01-02",
+    },
+    {
+        _id: "6371259df03239528f000083",
+        candidateId: "63701d24f0323944410002ec",
+        position: "vice Chairperson",
+        votes: [
+            "63701d74f0323986f3000158",
+            "63701d74f03239d40b00007e",
+            "63701d74f03239867500014b",
+            "63701d74f032398675000152",
+            "63701d74f03239db6900014d",
+            "63701d74f03239bef000014c",
+            "63701d74f03239b7f7000046",
+            "63701d74f03239bef0000145",
+            "63701d74f032395b3300013a",
+            "63701d74f03239d591000333",
+
+        ],
+        votesTotal: 10,
+        school: "humanities",
+        date:  "2021-01-02",
+    },
+]

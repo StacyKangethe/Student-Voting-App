@@ -19,7 +19,21 @@ export const update = async (req, res, next) => {
         return next(createError(403, "You can only update your account"))
     }
 };
-export const deleteUser = (req, res, next) => {};
+export const vote = async (req, res, next) => {
+    try{
+        await User.findByIdAndUpdate(req.user.id, {
+            $push: { votedUsers: req.params.id },
+        });
+        await User.findByIdAndUpdate(req.params.id, {
+            $inc: { voters: 1},
+        });
+        res.status(200).json("Vote successful")
+    } catch (err) {
+        next(err);
+    }
+};
+
 export const getUser = (req, res, next) => {};
-export const like = (req, res, next) => {};
+export const like = (req, res, next) => {
+};
 export const dislike = (req, res, next) => {};

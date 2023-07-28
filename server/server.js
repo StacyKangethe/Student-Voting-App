@@ -11,10 +11,17 @@ import managementRoutes from './routes/management.js';
 import votesRoutes from './routes/votes.js';
 import userloginRoutes from './routes/user.js';
 import authRoutes from './routes/authhumanities.js';
+import candidateRoutes from './routes/candidate.js';
+import userRoutes from './routes/user.js';
+
+// Data imports
 import Voter from './models/Voter.js';
-import ScienceStudents from './models/ScienceStudents.js';
+import ScienceStudents from './models/User.js';
 import HumanitiesStudents from './models/HumanitiesStudents.js';
 import cookieParser from 'cookie-parser';
+import Candidate from './models/candidate.js';
+import candidatestat from './models/candidatestat.js';
+import { dataUser, dataCandidate, dataCandidateStat } from './data/index.js';
 
 /*CONFIGURATIONS*/
 dotenv.config();
@@ -35,6 +42,8 @@ app.use("/api/management", managementRoutes);
 app.use("/api/votes", votesRoutes);
 app.use("/api/userlogin", userloginRoutes);
 app.use("/api/auth", authRoutes);
+app.use("/api/candidate", candidateRoutes);
+app.use("/api/user/vote", userRoutes);
 
 app.use((err, req, res, next) => {
     const status = err.status || 500;
@@ -73,6 +82,29 @@ app.get('/voter/:id', async(req, res) => {
    } catch (error) {
     res.status(500).json({message: error.message})
    }
+})
+
+//gets data of one voter by ID from the database
+app.get('/candidate/:id', async(req, res) => {
+    try{
+         const {id} = req.params;
+         const candidate = await Candidate.findById(id);
+         res.status(200).json(candidate);
+    } catch (error) {
+     res.status(500).json({message: error.message})
+    }
+ })
+
+//sends data to database using postman
+app.post('/candidate', async(req, res) => {
+    try{
+        const candidate = await Candidate.create(req.body)
+        res.status(200).json(candidate);
+
+    } catch (error) {
+        console.log(error.message);
+        res.status(500).json({message: error.message})
+    }
 })
 
 //sends data to database using postman
@@ -120,6 +152,11 @@ mongoose
             console.log("Backend server is running!");
         })
         console.log("DB Connection is successful")
+/*
+        Candidate.insertMany(dataCandidate);
+        candidatestat.insertMany(dataCandidateStat);
+        User.insertMany(dataUser);
+*/
     }).catch((err) => {
         console.log(err);
     });

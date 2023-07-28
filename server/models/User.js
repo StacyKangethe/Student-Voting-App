@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const ScienceSchema = new mongoose.Schema(
+const UserSchema = new mongoose.Schema(
     {
         student_id: { type: Number, required:true, unique: true },
         email: { type: String, required:true, unique: true },
@@ -14,4 +14,4 @@ const ScienceSchema = new mongoose.Schema(
     { timestamps: true }
 );
 
-export default mongoose.model("sciencestudent", ScienceSchema);
+export default mongoose.model("User", UserSchema);

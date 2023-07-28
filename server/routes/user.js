@@ -1,17 +1,20 @@
 import express from 'express';
-import { update, deleteUser, getUser, like, dislike } from '../controllers/user.js'
+import { update, vote, getUser, like, dislike } from '../controllers/user.js'
 import { verifyToken } from '../verifyToken.js';
 
 const router = express.Router();
 
-router.put("/:id", verifyToken, update)
+//update user
+router.put("/:id", verifyToken, update);
 
-router.delete("/:id", deleteUser)
 
-router.get("/:id", getUser)
+//vote for a candidate
+router.put("/vote/:id", verifyToken, vote)
 
-router.put("/:id", like)
+router.get("/find/:id", getUser);
 
-router.put("/:id", dislike)
+router.put("/like/:postid", verifyToken, like);
+
+router.put("/dislike/:postid", verifyToken,  dislike);
 
 export default router;
